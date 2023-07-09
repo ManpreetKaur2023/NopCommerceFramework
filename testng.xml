@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+<listeners>
+		<listener class-name="com.nopcommerce.AutomationFramework.Listeners.CustomListeners"></listener>
+		<listener class-name="com.nopcommerce.AutomationFramework.Listeners.TransformerForRetry"></listener>
+		<listener class-name="com.nopcommerce.AutomationFramework.Listeners.ExtentReportListener"></listener>
+	</listeners>
+
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.CheckOut"/>
+      <class name="com.nopcommerce.AutomationFramework2.Tests.CheckOutTest"/>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.Login"/>
+      <class name="com.nopcommerce.AutomationFramework2.Tests.DemoStoreTest"/>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.ShoppingCart"/>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.Register"/>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.Desktops"/>
+      <class name="com.nopcommerce.AutomationFramework2.Base.TestBase"/>
+      <class name="com.nopcommerce.AutomationFramework2.Tests.LoginTest"/>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.DemoStore"/>
+      <class name="com.nopcommerce.AutomationFramework2.Pages.BuildYourOwnComputer"/>
+      <class name="com.nopcommerce.AutomationFramework2.Tests.RegisterTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
