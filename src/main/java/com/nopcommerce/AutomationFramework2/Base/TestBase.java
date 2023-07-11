@@ -19,7 +19,6 @@ import com.nopcommerce.AutomationFramework.Listeners.WebDriverEvents;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
 public class TestBase {
 	public static WebDriver wd;
 	FileInputStream fileInputStream;
@@ -29,7 +28,7 @@ public class TestBase {
 	private EventFiringWebDriver eDriver;
 
 	public TestBase() {
-		prop=new Properties();
+		prop = new Properties();
 		try {
 			fileInputStream = new FileInputStream(
 					"C:\\Users\\Gurwinder\\eclipse-workspace\\AutomationFramework2\\src\\main\\java\\com\\nopcommerce\\AutomationFramework\\Config\\Config.properties");
@@ -45,50 +44,46 @@ public class TestBase {
 		}
 
 	}
-	
+
 	@BeforeClass
 	public void setUpLogger() {
-		logger=Logger.getLogger(TestBase.class);
+		logger = Logger.getLogger(TestBase.class);
 		PropertyConfigurator.configure("log4j.properties");
 		BasicConfigurator.configure();
 		logger.setLevel(Level.ALL);
 	}
-	
-	
-	
 
 	public void intialisation() {
-		String browserName = prop.getProperty("browser");
-switch (browserName) {
-case "Chrome":
-	wd=WebDriverManager.chromedriver().create();
-	
-	break;
-case "Edge":
-	wd=WebDriverManager.edgedriver().create();
-	break;
-case "Firefox":
-	wd=WebDriverManager.firefoxdriver().create();
-	break;
-default:
-	System.out.println("Enter a valid browser name.");
-	break;
-}
+		String browserName = System.getProperty("browser");
+		
+		switch (browserName) {
+		case "Chrome":
+			wd = WebDriverManager.chromedriver().create();
 
+			break;
+		case "Edge":
+			wd = WebDriverManager.edgedriver().create();
+			break;
+		case "Firefox":
+			wd = WebDriverManager.firefoxdriver().create();
+			break;
+		default:
+			System.out.println("Enter a valid browser name.");
+			break;
+		}
 
-eDriver = new EventFiringWebDriver(wd);
-events = new WebDriverEvents();
-eDriver.register(events);
-wd = eDriver;
- 
-wd.get(prop.getProperty("URL"));
-wd.manage().timeouts().implicitlyWait(Long.parseLong(prop.getProperty("IMPLICIT_WAIT")), TimeUnit.SECONDS);
+		eDriver = new EventFiringWebDriver(wd);
+		events = new WebDriverEvents();
+		eDriver.register(events);
+		wd = eDriver;
 
-wd.manage().window().maximize();
+		wd.get(prop.getProperty("URL"));
+		wd.manage().timeouts().implicitlyWait(Long.parseLong(prop.getProperty("IMPLICIT_WAIT")), TimeUnit.SECONDS);
+
+		wd.manage().window().maximize();
 
 	}
-	
-	
+
 	public void tearDown() {
 		wd.close();
 	}

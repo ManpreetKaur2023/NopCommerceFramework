@@ -27,7 +27,7 @@ public class DemoStoreTest extends TestBase {
 	}
 
 	@Test(priority = 1)
-	@Ignore
+	
 	public void validateUserRegister() {
 
 		register = demoStore.clickRegisterBtn();
@@ -45,6 +45,7 @@ public class DemoStoreTest extends TestBase {
 	}
 	
 	
+	@Test
 	
 	public void validateWindowSwitch() {
 
