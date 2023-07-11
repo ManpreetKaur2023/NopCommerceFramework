@@ -54,7 +54,9 @@ public class TestBase {
 	}
 
 	public void intialisation() {
-		String browserName = System.getProperty("browser");
+		String browserName = System.getProperty("browser","Chrome");
+		
+	
 		
 		switch (browserName) {
 		case "Chrome":
